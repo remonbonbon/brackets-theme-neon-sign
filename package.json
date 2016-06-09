@@ -1,0 +1,20 @@
+{
+  "title": "Neon",
+  "name": "remonbonbon.neon",
+  "description": "Neon theme",
+  "version": "1.0.0",
+  "author": "remonbonbon",
+  "license": "MIT",
+  "homepage": "https://github.com/remonbonbon/brackets-theme-neon",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/remonbonbon/brackets-theme-neon.git"
+  },
+  "engines": {
+    "brackets": ">=0.42.0"
+  },
+  "theme": {
+    "file": "main.less",
+    "dark": true
+  }
+}

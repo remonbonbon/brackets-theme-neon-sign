@@ -1,0 +1,142 @@
+// Overall Colors
+@blue: #5be6f2;
+@purple: #bd59fc;
+@lime: #c6f81e;
+@orange: #fd9215;
+@green: #32d89f;
+@red: #f00;
+
+@comment: #989898;
+@string: #d0a74c;
+@string2: #fd55d7;
+
+@background: #050505;
+@foreground: #dac1fd;
+@nonactive: desaturate(darken(@foreground, 50%), 70%);
+
+// Selection, Active-line, Matching
+@selection-focused: fade(#3d7ffc, 50%);
+@selection-unfocused: darken(@selection-focused, 30%);
+@activeline-bgcolor: lighten(@background, 14%);
+@matching-bracket: @background;
+@matching-bracket-bg: @foreground;
+
+// Gutters and Line number
+@gutters-line: @nonactive;
+@line-number: @nonactive;
+@line-number-active: @foreground;
+
+.shadow(@color, @offset: 1px, @radius: 8px, @sat: 50%, @dark: 35%) {
+  color: @color !important;
+  text-shadow:
+    0+@offset 0+@offset @radius darken(saturate(@color, @sat), @dark),
+    0+@offset 0-@offset @radius darken(saturate(@color, @sat), @dark),
+    0-@offset 0+@offset @radius darken(saturate(@color, @sat), @dark),
+    0-@offset 0-@offset @radius darken(saturate(@color, @sat), @dark),
+    !important;
+}
+.large-shadow(@color) {
+  .shadow(@color, @offset: 4px, @radius: 10px, @sat: 50%, @dark: 0%);
+}
+
+.CodeMirror .cm-keyword,
+.CodeMirror .cm-atom,
+.CodeMirror .cm-number, {
+  .shadow(@purple);
+}
+.CodeMirror .cm-def,
+.CodeMirror .cm-tag,
+.CodeMirror .cm-qualifier, {
+  .shadow(@orange);
+}
+.CodeMirror .cm-variable { .shadow(@blue); }
+.CodeMirror .cm-variable-2 { .shadow(@green); }
+.CodeMirror .cm-property,
+.CodeMirror .cm-attribute, {
+  .shadow(@lime);
+}
+.CodeMirror .cm-global-variable { .shadow(@red); }
+
+.CodeMirror .cm-string { color: @string; }
+.CodeMirror .cm-string-2 { color: @string2; }
+
+.CodeMirror .cm-operator { color: @foreground; }
+.CodeMirror .cm-comment { color: @comment; }
+
+
+// Default background and text color
+.CodeMirror,
+.CodeMirror .CodeMirror-scroll {
+  background-color: @background;
+  color: @foreground;
+}
+
+// Selection
+.CodeMirror .CodeMirror-selected {
+  background: @selection-unfocused;
+}
+.CodeMirror-focused .CodeMirror-selected {
+  background: @selection-focused;
+}
+
+// Gutter
+.CodeMirror .CodeMirror-gutters {
+  background-color: @background;
+  border-right: 1px solid @gutters-line;
+}
+
+// Line number
+.CodeMirror-activeline .CodeMirror-gutter-elt {
+  .shadow(@line-number-active);
+}
+.CodeMirror-gutter-elt {
+  color: @line-number !important;
+}
+
+// Matching
+.CodeMirror .CodeMirror-matchingbracket {
+  color: @matching-bracket !important;
+  background-color: @matching-bracket-bg;
+
+  @offset: 3px;
+  @radius: 8px;
+  @sat: 50%;
+  @dark: 20%;
+  box-shadow:
+    0+@offset 0+@offset @radius darken(saturate(@matching-bracket-bg, @sat), @dark),
+    0+@offset 0-@offset @radius darken(saturate(@matching-bracket-bg, @sat), @dark),
+    0-@offset 0+@offset @radius darken(saturate(@matching-bracket-bg, @sat), @dark),
+    0-@offset 0-@offset @radius darken(saturate(@matching-bracket-bg, @sat), @dark),
+    !important;
+}
+.CodeMirror-matchingtag {
+//   Disable tag matching
+  background: transparent;
+}
+
+// Active line
+.CodeMirror-activeline-background,
+.CodeMirror-activeline .CodeMirror-gutter-elt {
+  background: @activeline-bgcolor !important;
+}
+
+// Cursor
+.CodeMirror .CodeMirror-cursor {
+  border-left: 1px solid @foreground !important;
+}
+.CodeMirror .CodeMirror-overwrite .CodeMirror-cursor {
+  border-left: none !important;
+  border-bottom: 1px solid @foreground;
+  width: 1.2ex;
+}
+
+/* Non-editor styling */
+
+#image-holder,
+#not-editor {
+  background-color: @background;
+}
+
+#image-holder {
+  color: @foreground;
+}
