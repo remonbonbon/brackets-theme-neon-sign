@@ -1,5 +1,5 @@
 # brackets-theme-neon
-Brackets Neon theme
+Lights up your code as a neon sign.
 
 ## HTML
 ![HTML Screenshot](https://github.com/remonbonbon/brackets-theme-neon/blob/master/html.png)
