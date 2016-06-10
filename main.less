@@ -1,11 +1,4 @@
 // Overall Colors
-@blue: #5be6f2;
-@purple: #bd59fc;
-@lime: #c6f81e;
-@orange: #fd9215;
-@green: #32d89f;
-@red: #f00;
-
 @comment: #989898;
 @string: #d0a74c;
 @string2: #fd55d7;
@@ -26,36 +19,46 @@
 @line-number: @nonactive;
 @line-number-active: @foreground;
 
-.shadow(@color, @offset: 1px, @radius: 8px, @sat: 50%, @dark: 35%) {
-  color: @color !important;
+.shadow(@fontColor, @shadowColor: @fontColor, @dark: 35%, @offset: 1px, @radius: 8px, @sat: 50%) {
+  color: @fontColor !important;
   text-shadow:
-    0+@offset 0+@offset @radius darken(saturate(@color, @sat), @dark),
-    0+@offset 0-@offset @radius darken(saturate(@color, @sat), @dark),
-    0-@offset 0+@offset @radius darken(saturate(@color, @sat), @dark),
-    0-@offset 0-@offset @radius darken(saturate(@color, @sat), @dark),
+    0+@offset 0+@offset @radius darken(saturate(@shadowColor, @sat), @dark),
+    0+@offset 0-@offset @radius darken(saturate(@shadowColor, @sat), @dark),
+    0-@offset 0+@offset @radius darken(saturate(@shadowColor, @sat), @dark),
+    0-@offset 0-@offset @radius darken(saturate(@shadowColor, @sat), @dark),
     !important;
 }
-.large-shadow(@color) {
-  .shadow(@color, @offset: 4px, @radius: 10px, @sat: 50%, @dark: 0%);
-}
+
+.purple-shadow() { .shadow(#f6acff, #c400ff, 5%); }
+.orange-shadow() { .shadow(#fdb87d, #fd6e15, 23%); }
+.yellow-shadow() { .shadow(#ffffa9, #fff72a, 35%); }
+.blue-shadow()   { .shadow(#9cddfa, #0811f5, 0%); }
+.green-shadow()  { .shadow(#85f0cb, #32d85f, 25%); }
+.red-shadow()    { .shadow(#ff3e3e, #f00, 18%); }
 
 .CodeMirror .cm-keyword,
 .CodeMirror .cm-atom,
 .CodeMirror .cm-number, {
-  .shadow(@purple);
+  .purple-shadow();
 }
 .CodeMirror .cm-def,
 .CodeMirror .cm-tag,
 .CodeMirror .cm-qualifier, {
-  .shadow(@orange);
+  .orange-shadow();
 }
-.CodeMirror .cm-variable { .shadow(@blue); }
-.CodeMirror .cm-variable-2 { .shadow(@green); }
+.CodeMirror .cm-variable {
+  .yellow-shadow();
+}
+.CodeMirror .cm-variable-2 {
+  .blue-shadow();
+}
 .CodeMirror .cm-property,
 .CodeMirror .cm-attribute, {
-  .shadow(@lime);
+  .green-shadow();
 }
-.CodeMirror .cm-global-variable { .shadow(@red); }
+.CodeMirror .cm-global-variable {
+  .red-shadow();
+}
 
 .CodeMirror .cm-string { color: @string; }
 .CodeMirror .cm-string-2 { color: @string2; }
