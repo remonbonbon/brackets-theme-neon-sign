@@ -1,14 +1,14 @@
 {
-  "title": "Neon",
-  "name": "remonbonbon.neon",
-  "description": "Neon theme",
+  "title": "Neon Sign",
+  "name": "remonbonbon.neon-sign",
+  "description": "Lights up your code as a neon sign.",
   "version": "1.0.0",
   "author": "remonbonbon",
   "license": "MIT",
-  "homepage": "https://github.com/remonbonbon/brackets-theme-neon",
+  "homepage": "https://github.com/remonbonbon/brackets-theme-neon-sign",
   "repository": {
     "type": "git",
-    "url": "git://github.com/remonbonbon/brackets-theme-neon.git"
+    "url": "git://github.com/remonbonbon/brackets-theme-neon-sign.git"
   },
   "engines": {
     "brackets": ">=0.42.0"
