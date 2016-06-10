@@ -1,4 +1,4 @@
-# brackets-theme-neon
+# Neon Sign theme for Brackets
 Lights up your code as a neon sign.
 
 ## JS
