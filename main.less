@@ -19,13 +19,17 @@
 @line-number: @nonactive;
 @line-number-active: @foreground;
 
-.shadow(@fontColor, @shadowColor: @fontColor, @dark: 35%, @offset: 1px, @radius: 8px, @sat: 50%) {
-  color: @fontColor !important;
-  text-shadow:
-    0+@offset 0+@offset @radius darken(saturate(@shadowColor, @sat), @dark),
-    0+@offset 0-@offset @radius darken(saturate(@shadowColor, @sat), @dark),
-    0-@offset 0+@offset @radius darken(saturate(@shadowColor, @sat), @dark),
-    0-@offset 0-@offset @radius darken(saturate(@shadowColor, @sat), @dark),
+.shadow(@font-color, @shadow-color: @font-color, @dark: 35%, @shadow-property: text-shadow) {
+  @offset: 1px;
+  @radius: 8px;
+  @sat: 50%;
+
+  color: @font-color !important;
+  @{shadow-property}:
+    0+@offset 0+@offset @radius darken(saturate(@shadow-color, @sat), @dark),
+    0+@offset 0-@offset @radius darken(saturate(@shadow-color, @sat), @dark),
+    0-@offset 0+@offset @radius darken(saturate(@shadow-color, @sat), @dark),
+    0-@offset 0-@offset @radius darken(saturate(@shadow-color, @sat), @dark),
     !important;
 }
 
@@ -98,19 +102,10 @@
 
 // Matching
 .CodeMirror .CodeMirror-matchingbracket {
-  color: @matching-bracket !important;
   background-color: @matching-bracket-bg;
-
-  @offset: 3px;
-  @radius: 8px;
-  @sat: 50%;
-  @dark: 20%;
-  box-shadow:
-    0+@offset 0+@offset @radius darken(saturate(@matching-bracket-bg, @sat), @dark),
-    0+@offset 0-@offset @radius darken(saturate(@matching-bracket-bg, @sat), @dark),
-    0-@offset 0+@offset @radius darken(saturate(@matching-bracket-bg, @sat), @dark),
-    0-@offset 0-@offset @radius darken(saturate(@matching-bracket-bg, @sat), @dark),
-    !important;
+  .shadow(@matching-bracket, @matching-bracket-bg,
+    @dark: 35%,
+    @shadow-property: box-shadow);
 }
 .CodeMirror-matchingtag {
 //   Disable tag matching
