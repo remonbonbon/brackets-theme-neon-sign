@@ -13,6 +13,7 @@
 @activeline-bgcolor: lighten(@background, 14%);
 @matching-bracket: @background;
 @matching-bracket-bg: @foreground;
+@matching-tag-bg: desaturate(darken(@foreground, 30%), 20%);
 
 // Gutters and Line number
 @gutters-line: @nonactive;
@@ -110,8 +111,11 @@
     @shadow-property: box-shadow);
 }
 .CodeMirror-matchingtag {
-//   Disable tag matching
-  background: transparent;
+  background: @matching-tag-bg;
+}
+// Adjust the color of attribute value for highlighted HTML tag.
+.CodeMirror-matchingtag.cm-string {
+  color: lighten(@string, 20%);
 }
 
 // Active line
